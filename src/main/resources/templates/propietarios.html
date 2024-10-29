@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Propietarios</title>
+  <style>
+    .navbar {
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           background: linear-gradient(135deg, #4CAF50, #2e7d32);
+           padding: 10px 20px;
+           position: fixed;
+           top: 0;
+           width: 100%;
+           z-index: 1000;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+           font-family: Arial, sans-serif;
+       }
+
+       .navbar .logo {
+           font-size: 22px;
+           font-weight: bold;
+           color: #ffffff;
+           text-decoration: none;
+           padding: 8px 15px;
+           border-radius: 5px;
+           transition: transform 0.2s;
+       }
+
+       .navbar .logo:hover {
+           transform: scale(1.1);
+       }
+
+       .navbar .nav-buttons {
+           display: flex;
+           gap: 10px;
+       }
+
+       .navbar a.button {
+           background-color: #66bb6a;
+           color: #fff;
+           padding: 8px 15px;
+           border-radius: 20px;
+           font-size: 16px;
+           font-weight: bold;
+           text-decoration: none;
+           transition: background-color 0.3s, transform 0.2s;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+       }
+
+       .navbar a.button:hover {
+           background-color: #388e3c;
+           transform: scale(1.05);
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+       }
+
+       .content {
+           padding-top: 100px;
+       }
+   body {
+     font-family: Arial, sans-serif;
+     background-color: #f0f2f5;
+     color: #333;
+     text-align: center;
+     padding: 20px;
+   }
+   h1 {
+     color: #4CAF50;
+   }
+   a {
+     color: #4CAF50;
+     text-decoration: none;
+     font-weight: bold;
+   }
+   a:hover {
+     text-decoration: underline;
+   }
+   table {
+     width: 80%;
+     margin: 20px auto;
+     border-collapse: collapse;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+   th, td {
+     padding: 12px;
+     border-bottom: 1px solid #ddd;
+   }
+   th {
+     background-color: #4CAF50;
+     color: white;
+   }
+   tr:hover {
+     background-color: #f1f1f1;
+   }
+   .acciones a {
+     margin: 0 5px;
+     padding: 5px 10px;
+     border-radius: 5px;
+     background-color: #4CAF50;
+     color: white;
+     transition: background-color 0.3s;
+   }
+   .acciones a:hover {
+     background-color: #45a049;
+   }
+   .btn-agregar {
+     display: inline-block;
+     margin: 20px 0;
+     padding: 10px 20px;
+     background-color: #4CAF50;
+     color: white;
+     text-decoration: none;
+     border-radius: 5px;
+     transition: background-color 0.3s;
+   }
+   .btn-agregar:hover {
+     background-color: #45a049;
+   }
+  </style>
+</head>
+<body>
+<div th:insert="navbar :: navbar"></div>
+<div class="content">
+
+
+<h1>Lista de Propietarios</h1>
+<a th:href="@{/propietarios/nuevo}" class="btn-agregar">Agregar Nuevo Propietario</a>
+<table>
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="propietario : ${propietarios}">
+    <td th:text="${propietario.nombre}"></td>
+    <td th:text="${propietario.direccion}"></td>
+    <td th:text="${propietario.telefono}"></td>
+    <td class="acciones">
+      <a th:href="@{/propietarios/editar/{id}(id=${propietario.id})}">Editar</a>
+      <a th:href="@{/propietarios/eliminar/{id}(id=${propietario.id})}">Eliminar</a>
+      <a th:href="@{/propietarios/{id}/mascotas/nuevo(id=${propietario.id})}" class="btn-agregar">Añadir Mascota</a>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html>

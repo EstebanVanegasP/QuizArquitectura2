@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #4CAF50, #2e7d32);
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+
+        .navbar .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navbar a.button {
+            background-color: #66bb6a;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a.button:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+<div th:fragment="navbar">
+    <div class="navbar">
+
+        <div class="nav-buttons">
+            <a th:href="@{/}" class="button">Página Principal</a>
+            <a href="#" class="button" onclick="window.history.back()">Regresar</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

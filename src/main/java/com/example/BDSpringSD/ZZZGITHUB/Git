@@ -1,0 +1,5 @@
+echo "Parcial de Segundo Corte de Arquitectura terminado" >> README.md
+
+git add .
+git commit -m "Parcial"
+git push origin main
